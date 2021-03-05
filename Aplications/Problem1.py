@@ -32,10 +32,10 @@ print(len(gender))
 def StructedData(data, x):
     i = 0
     counts = len(data)
-    for data in counts:
-        if data == "x":
+    for counts in data:
+        if counts == x:
             i = i+1
     return i
 
 
-print(StructedData(gender, "male"))
+print(StructedData(gender, 'male'))
