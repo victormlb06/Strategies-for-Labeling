@@ -1,5 +1,7 @@
 import csv
 import numpy as np
+from scipy.stats import entropy
+from math import log, e
 
 gender = []
 race_ethnicity = []
@@ -26,7 +28,11 @@ with open('StudentsPerformance.csv') as archive:
         reading_score.append(l[6])
         writing_score.append(l[7])
 
-print(len(gender))
+
+def Entropy(data, Px, base):
+    Px = Px/len(data)
+    H = (Px * log(Px, base)) * (-1)
+    return H
 
 
 def StructedData(data, x):
@@ -38,4 +44,4 @@ def StructedData(data, x):
     return i
 
 
-print(StructedData(gender, 'male'))
+print(Entropy(gender, StructedData(gender, 'male'), 10))
