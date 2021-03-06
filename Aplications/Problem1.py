@@ -13,6 +13,7 @@ math_score = []
 reading_score = []
 writing_score = []
 
+
 with open('StudentsPerformance.csv') as archive:
     next(archive)
 
@@ -53,10 +54,6 @@ def frequencyDataSeparation(data):
                     aux.append(qtd)
             if not aux:
                 aux.append(qtd)
-    if not var:
-        print("Entrei")
-        aux = np.unique(data, return_counts=True)
-
     return aux
 
 
@@ -64,12 +61,8 @@ def totalEntropy(data, data2):
     a = len(data2)
     b = len(data)
     sum = 0
-    print(data2[0])
-    var = isinstance(data2[0], int)
-    print(var)
-    if var:
-        for a in data2:
-            sum = SubEntropy(data, data.count(a), 10) + sum
+    for a in data2:
+        sum = SubEntropy(data, StructedData(data, a), 10) + sum
     return sum
 
 
@@ -80,3 +73,8 @@ def StructedData(data, x):
         if counts == x:
             i = i+1
     return i
+
+
+print(SubEntropy(gender, StructedData(gender, 'male'), 10))
+print(SubEntropy(gender, StructedData(gender, 'female'), 10))
+print(totalEntropy(math_score, frequencyDataSeparation(math_score)))
