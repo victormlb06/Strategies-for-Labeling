@@ -2,6 +2,7 @@ import csv
 import numpy as np
 from scipy.stats import entropy
 from math import log, e
+import pandas as pd
 
 gender = []
 race_ethnicity = []
@@ -13,6 +14,7 @@ reading_score = []
 writing_score = []
 
 with open('StudentsPerformance.csv') as archive:
+    next(archive)
 
     # 2. ler a tabela
     table = csv.reader(archive, delimiter=',')
@@ -29,10 +31,46 @@ with open('StudentsPerformance.csv') as archive:
         writing_score.append(l[7])
 
 
-def Entropy(data, Px, base):
+def SubEntropy(data, Px, base):
     Px = Px/len(data)
     H = (Px * log(Px, base)) * (-1)
     return H
+
+
+def frequencyDataSeparation(data):
+    aux = []
+    qtd = len(data)
+    var = isinstance(data[1], str)
+    if var:
+        for qtd in data:
+            if aux:
+                y = len(aux)
+                cont = 0
+                for y in aux:
+                    if qtd == y:
+                        cont = cont+1
+                if cont == 0:
+                    aux.append(qtd)
+            if not aux:
+                aux.append(qtd)
+    if not var:
+        print("Entrei")
+        aux = np.unique(data, return_counts=True)
+
+    return aux
+
+
+def totalEntropy(data, data2):
+    a = len(data2)
+    b = len(data)
+    sum = 0
+    print(data2[0])
+    var = isinstance(data2[0], int)
+    print(var)
+    if var:
+        for a in data2:
+            sum = SubEntropy(data, data.count(a), 10) + sum
+    return sum
 
 
 def StructedData(data, x):
@@ -42,6 +80,3 @@ def StructedData(data, x):
         if counts == x:
             i = i+1
     return i
-
-
-print(Entropy(gender, StructedData(gender, 'male'), 10))
