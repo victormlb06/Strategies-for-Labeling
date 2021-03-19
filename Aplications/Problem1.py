@@ -3,7 +3,7 @@ import numpy as np
 from scipy.stats import entropy
 from math import log, e
 import pandas as pd
-from ShannonEntropy import SubEntropy, totalEntropy, Probabilite
+from ShannonEntropy import SubEntropy, totalEntropy, Probability
 
 df = pd.read_csv("StudentsPerformance.csv")
 df.head()

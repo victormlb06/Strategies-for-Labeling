@@ -8,12 +8,12 @@ vector = []
 
 
 def SubEntropy(data, item, base):
-    Px = Probabilite(item, data)
+    Px = Probability(item, data)
     H = (Px * log(Px, base)) * (-1)
     return H
 
 
-def Probabilite(a, data):
+def Probability(a, data):
     count = np.count_nonzero(data == a)
     Px = count/len(data)
     return Px
@@ -24,3 +24,7 @@ def totalEntropy(data, data2):
     for a in data:
         sum = SubEntropy(data2, a, 10) + sum
     return sum
+
+
+# Data2 = All data
+# Data = Selected data(gender,...)
