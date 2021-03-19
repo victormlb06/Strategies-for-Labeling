@@ -9,7 +9,10 @@ In this sense, in order to improve coding in python, I set out to solve some pro
 2. Perform the KL Divergence calculation on a selected data set (Problemm2)
 3. Construct a simple graph with one of the results (Figure)
 
-https://github.com/victormlb06/Strategies-for-Labeling/blob/main/Figura%20KLDivergence.png
+<p align="center">
+  <img src="https://github.com/victormlb06/Strategies-for-Labeling/blob/main/Figura%20KLDivergence.png" alt="Logo moveit"/>
+</p>
+
 
 ## Dataset
 The dataset used is available on github, but was taken from https://www.kaggle.com/spscientist/students-performance-in-exams
